@@ -83,7 +83,9 @@ Clicking *Gaps in MTN statements* lists the 17 rows where MTN's balance chain br
 
 ```
 Data/                         anonymised CSVs the report reads
-MoMo & IC Money Report (Public).pbip   Power BI project (open in Power BI Desktop, then Refresh)
+MoMo & IC Money Report (Public).pbip   Power BI project: open in Power BI Desktop, set the DataFolder
+                                       parameter to this repo's Data folder (Transform data > Edit
+                                       parameters), then Refresh
 pipeline/                     Node.js scripts: extract → reconcile → match → analyse → Excel / Power BI
 Following the Money - Case Study (Anonymised).pdf   7-page write-up
 ```
