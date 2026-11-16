@@ -1,0 +1,197 @@
+/// All measures.
+table _Measures
+	lineageTag: 433388b7-9f42-4312-8ffc-9feadcdcebd7
+
+	measure 'Money In' = CALCULATE ( SUM ( MoMo[Amount] ), KEEPFILTERS ( MoMo[Direction] = "In" ) )
+		formatString: "GHS "#,0
+		displayFolder: MoMo
+		lineageTag: ff920734-cf1d-4020-b8d3-3bf1e50eea31
+
+	measure 'Money Out' = CALCULATE ( SUM ( MoMo[Amount] ), KEEPFILTERS ( MoMo[Direction] = "Out" ) )
+		formatString: "GHS "#,0
+		displayFolder: MoMo
+		lineageTag: 218adb5f-405f-4eee-a9d3-e8f880809e7f
+
+	measure 'Net Flow' = [Money In] - [Money Out]
+		formatString: "GHS "#,0
+		displayFolder: MoMo
+		lineageTag: e92394f5-efd2-4459-98ae-8ad1a544df64
+
+	measure Transactions = COUNTROWS ( MoMo ) + 0
+		formatString: #,0
+		displayFolder: MoMo
+		lineageTag: 7d0e46a9-e96d-4706-a18e-3a853b2b5429
+
+	/// Charges that actually left the wallet: balance fall minus amount.
+	measure 'Charges Paid' = SUM ( MoMo[ChargesPaid] ) + 0
+		formatString: "GHS "#,0.00
+		displayFolder: MoMo
+		lineageTag: dcd4c97e-fc61-4d02-8785-baa58d749502
+
+	/// Fee + E-Levy columns on the statement (these were paid by merchants, not deducted from the wallet).
+	measure 'Fees Shown by MTN' = SUM ( MoMo[FeeShown] ) + 0
+		formatString: "GHS "#,0.00
+		displayFolder: MoMo
+		lineageTag: 86a13839-6bc3-476a-9455-b9fc050e7e52
+
+	measure 'Charged Transactions' = CALCULATE ( COUNTROWS ( MoMo ), MoMo[ChargesPaid] > 0 ) + 0
+		formatString: #,0
+		displayFolder: MoMo
+		lineageTag: 00eaa4f9-9791-434f-b150-45d9640fbe9a
+
+	measure 'Charges % of Money Out' = DIVIDE ( [Charges Paid], [Money Out] )
+		formatString: 0.00%
+		displayFolder: MoMo
+		lineageTag: cf955a65-9a44-4cf1-8607-bd319a1876c2
+
+	/// Net balance change with no transaction on the statement (gaps in MTN statements).
+	measure 'Unlisted Movement' = SUM ( MoMo[UnlistedMovement] ) + 0
+		formatString: "GHS "#,0.00
+		displayFolder: MoMo
+		lineageTag: cbf426fa-9ea9-4ab7-ba63-89b9424c7d53
+
+	/// Rows whose balance-before does not equal the previous balance-after.
+	measure 'Balance Breaks' = CALCULATE ( COUNTROWS ( MoMo ), MoMo[UnlistedMovement] <> 0 ) + 0
+		formatString: #,0
+		displayFolder: MoMo
+		lineageTag: 3d6d4a0c-1f48-4e41-a497-3eb80c759b81
+
+	measure 'Opening Balance' = VAR s = MIN ( MoMo[Seq] ) RETURN CALCULATE ( MAX ( MoMo[BalanceBefore] ), MoMo[Seq] = s, REMOVEFILTERS ( MoMo[Direction], MoMo[Category] ) )
+		formatString: "GHS "#,0.00
+		displayFolder: MoMo
+		lineageTag: 7f497d8d-c39e-4ed1-8a0d-2f98aa2037d6
+
+	measure 'Closing Balance' = VAR s = MAX ( MoMo[Seq] ) RETURN CALCULATE ( MAX ( MoMo[BalanceAfter] ), MoMo[Seq] = s, REMOVEFILTERS ( MoMo[Direction], MoMo[Category] ) )
+		formatString: "GHS "#,0.00
+		displayFolder: MoMo
+		lineageTag: 82da366b-e56d-41fa-961a-9b06c6c9456e
+
+	/// Should be 0 with no filters.
+	measure 'Balance Check' = [Opening Balance] + [Money In] - [Money Out] - [Charges Paid] + [Unlisted Movement] - [Closing Balance]
+		formatString: "GHS "#,0.00
+		displayFolder: Checks
+		lineageTag: 6571a0bc-33f8-435b-ac1f-b8da241bfad8
+
+	measure 'Work Funds In' = CALCULATE ( [Money In], KEEPFILTERS ( MoMo[Category] = "Work funds (employer)" ) )
+		formatString: "GHS "#,0
+		displayFolder: MoMo
+		lineageTag: 428debe8-a1e2-404c-a572-a4966f65e25b
+
+	measure 'Work Share of Inflows' = DIVIDE ( [Work Funds In], [Money In] )
+		formatString: 0.0%
+		displayFolder: MoMo
+		lineageTag: e887092e-1e58-4dcd-9203-56b3c5e5d64f
+
+	/// Days the balance fell under GHS 50 (scaled in the public version).
+	measure 'Days Below GHS 50' = COUNTROWS ( FILTER ( VALUES ( MoMo[Date] ), CALCULATE ( MIN ( MoMo[BalanceAfter] ) ) < 30.90 ) ) + 0
+		formatString: #,0
+		displayFolder: MoMo
+		lineageTag: 4afdeb20-1312-4fed-98f1-af485d08024a
+
+	measure 'IC Paid In from MoMo' = CALCULATE ( SUM ( IC[Credit] ), KEEPFILTERS ( IC[Type] = "Money in from MoMo" ) )
+		formatString: "GHS "#,0
+		displayFolder: IC
+		lineageTag: aa8bc38e-400c-44bc-ad36-a1367281b850
+
+	measure 'IC Paid Out to You' = CALCULATE ( SUM ( IC[Debit] ), KEEPFILTERS ( IC[Type] = "Money out to you" ) )
+		formatString: "GHS "#,0
+		displayFolder: IC
+		lineageTag: 14bc7fc1-5f99-4cea-b093-49abe1394b48
+
+	measure 'IC Contributions' = CALCULATE ( COUNTROWS ( IC ), KEEPFILTERS ( IC[Type] = "Money in from MoMo" ) ) + 0
+		formatString: #,0
+		displayFolder: IC
+		lineageTag: d0414ecb-8c3f-48a0-bcdb-2cdda52fab31
+
+	measure 'Shares Bought' = CALCULATE ( SUM ( IC[Consideration] ), KEEPFILTERS ( IC[Action] = "Buy" ) ) + 0
+		formatString: "GHS "#,0
+		displayFolder: IC
+		lineageTag: 3ac247e6-c34b-4aba-a13d-c1fad08db824
+
+	measure 'Shares Sold' = CALCULATE ( SUM ( IC[Consideration] ), KEEPFILTERS ( IC[Action] = "Sell" ) ) + 0
+		formatString: "GHS "#,0
+		displayFolder: IC
+		lineageTag: 856bc36f-1efc-4b72-94e4-ac1fefeab6ff
+
+	measure 'Trading Charges' = SUM ( IC[TradeCharges] ) + 0
+		formatString: "GHS "#,0.00
+		displayFolder: IC
+		lineageTag: 0e545e14-2df2-4998-8ad6-d0eb46675913
+
+	measure 'Trading Cost %' = DIVIDE ( [Trading Charges], [Shares Bought] + [Shares Sold] )
+		formatString: 0.00%
+		displayFolder: IC
+		lineageTag: 51540c1b-edd1-40a8-8403-375b3ba25f85
+
+	measure Trades = CALCULATE ( COUNTROWS ( IC ), IC[Action] <> BLANK () ) + 0
+		formatString: #,0
+		displayFolder: IC
+		lineageTag: e03f5deb-3605-4f4f-b9ad-ec8a846310ec
+
+	measure 'Portfolio Value' = SUM ( Holdings[MarketValue] ) + 0
+		formatString: "GHS "#,0.00
+		displayFolder: IC
+		lineageTag: bcdb86ba-2877-4bc7-b2f3-cf08728e5fd5
+
+	measure 'Equity Value' = CALCULATE ( SUM ( Holdings[MarketValue] ), KEEPFILTERS ( Holdings[Class] = "Equities" ) ) + 0
+		formatString: "GHS "#,0.00
+		displayFolder: IC
+		lineageTag: 22599676-1db5-4aed-aba5-d371ea0ea9f6
+
+	measure 'Cost Basis' = SUM ( Holdings[CostBasis] ) + 0
+		formatString: "GHS "#,0.00
+		displayFolder: IC
+		lineageTag: 09095386-6b3e-401d-a7a9-76b4306d2999
+
+	measure 'Unrealised Gain' = SUM ( Holdings[UnrealisedGain] ) + 0
+		formatString: "+GHS "#,0.00;"-GHS "#,0.00
+		displayFolder: IC
+		lineageTag: c0b9272c-1146-4ae6-a330-165ff7c1445e
+
+	measure 'Unrealised Return %' = DIVIDE ( [Unrealised Gain], [Cost Basis] )
+		formatString: +0.0%;-0.0%
+		displayFolder: IC
+		lineageTag: 35421969-3c23-4893-9f4f-b93bcb714255
+
+	measure 'MoMo Rows Listed' = COUNTROWS ( MoMo ) + 0
+		formatString: #,0
+		displayFolder: Detail
+		lineageTag: dc32882c-efcb-4191-a139-e5cd8b85ad1c
+
+	measure 'IC Rows Listed' = COUNTROWS ( IC ) + 0
+		formatString: #,0
+		displayFolder: Detail
+		lineageTag: d3352bce-ee39-406a-805e-7a83a58a635f
+
+	measure 'IC Rows to Match' = CALCULATE ( COUNTROWS ( IC ), KEEPFILTERS ( IC[Type] IN { "Money in from MoMo", "Money out to you" } ), KEEPFILTERS ( IC[Date] <= DATE ( 2026, 11, 16 ) ) ) + 0
+		formatString: #,0
+		displayFolder: Checks
+		lineageTag: 2bb918af-0f19-4d91-8f27-b1acbf9f8915
+
+	measure 'IC Rows Matched' = CALCULATE ( [IC Rows to Match], LEFT ( IC[MatchStatus], 7 ) = "Matched" ) + 0
+		formatString: #,0
+		displayFolder: Checks
+		lineageTag: d6b81851-3634-4674-b066-169b0e5f71af
+
+	measure 'MoMo Match Rate' = DIVIDE ( [IC Rows Matched], [IC Rows to Match] )
+		formatString: 0.0%
+		displayFolder: Checks
+		lineageTag: d4ee3fff-7c73-4712-9c9c-1d937bf5a310
+
+	measure 'Avg Posting Lag (days)' = AVERAGE ( IC[LagDays] )
+		formatString: 0.0
+		displayFolder: Checks
+		lineageTag: 0db4766c-6d27-4ed3-a6d4-acd50151c9de
+
+	column Value
+		dataType: string
+		isHidden
+		lineageTag: ad57b56d-0c2e-4896-8ced-c924863a5d2e
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [Value]
+
+	partition _Measures = calculated
+		mode: import
+		source = ROW ( "Value", BLANK () )
+

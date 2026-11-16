@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "Report",
+    "displayName": "MoMo & IC Money Report (Public)"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "de9ae709-dea4-444b-97f8-e09dc9851522"
+  }
+}

@@ -1,0 +1,12 @@
+relationship 35f3efa2-173d-4e8d-9952-92268be25e36
+	fromColumn: MoMo.Date
+	toColumn: Date.Date
+
+relationship a11c3ef3-1c71-4807-afbd-beb4d4c87d24
+	fromColumn: IC.Date
+	toColumn: Date.Date
+
+relationship e8ffbb71-f63b-47ff-9bcb-380859ca5431
+	fromColumn: IC.Ticker
+	toColumn: Holdings.Asset
+

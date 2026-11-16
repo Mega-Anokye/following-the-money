@@ -1,0 +1,260 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/page/2.1.0/schema.json",
+  "name": "momo_detail",
+  "displayName": "MoMo transactions",
+  "displayOption": "FitToPage",
+  "height": 720,
+  "width": 1280,
+  "filterConfig": {
+    "filters": [
+      {
+        "name": "fltGap",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "MoMo"
+              }
+            },
+            "Property": "BalanceGap"
+          }
+        },
+        "type": "Categorical",
+        "howCreated": "User"
+      },
+      {
+        "name": "fltCharged",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "MoMo"
+              }
+            },
+            "Property": "Charged"
+          }
+        },
+        "type": "Categorical",
+        "howCreated": "User"
+      },
+      {
+        "name": "dt_MoMo_Category",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "MoMo"
+              }
+            },
+            "Property": "Category"
+          }
+        },
+        "type": "Categorical",
+        "howCreated": "Drillthrough"
+      },
+      {
+        "name": "dt_MoMo_Direction",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "MoMo"
+              }
+            },
+            "Property": "Direction"
+          }
+        },
+        "type": "Categorical",
+        "howCreated": "Drillthrough"
+      },
+      {
+        "name": "dt_MoMo_Counterparty",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "MoMo"
+              }
+            },
+            "Property": "Counterparty"
+          }
+        },
+        "type": "Categorical",
+        "howCreated": "Drillthrough"
+      },
+      {
+        "name": "dt_MoMo_Statement",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "MoMo"
+              }
+            },
+            "Property": "Statement"
+          }
+        },
+        "type": "Categorical",
+        "howCreated": "Drillthrough"
+      },
+      {
+        "name": "dt_MoMo_Layout",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "MoMo"
+              }
+            },
+            "Property": "Layout"
+          }
+        },
+        "type": "Categorical",
+        "howCreated": "Drillthrough"
+      },
+      {
+        "name": "dt_Date_Month",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Date"
+              }
+            },
+            "Property": "Month"
+          }
+        },
+        "type": "Categorical",
+        "howCreated": "Drillthrough"
+      }
+    ]
+  },
+  "pageBinding": {
+    "name": "dt_momo",
+    "type": "Drillthrough",
+    "parameters": [
+      {
+        "name": "7fa3f75b3d033ec610c8",
+        "boundFilter": "dt_MoMo_Category",
+        "asAggregation": false,
+        "qnaSingleSelectRequired": false,
+        "fieldExpr": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "MoMo"
+              }
+            },
+            "Property": "Category"
+          }
+        }
+      },
+      {
+        "name": "9f7c9792cd8bfb89ff05",
+        "boundFilter": "dt_MoMo_Direction",
+        "asAggregation": false,
+        "qnaSingleSelectRequired": false,
+        "fieldExpr": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "MoMo"
+              }
+            },
+            "Property": "Direction"
+          }
+        }
+      },
+      {
+        "name": "1613ca0db10bdd1574a2",
+        "boundFilter": "dt_MoMo_Counterparty",
+        "asAggregation": false,
+        "qnaSingleSelectRequired": false,
+        "fieldExpr": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "MoMo"
+              }
+            },
+            "Property": "Counterparty"
+          }
+        }
+      },
+      {
+        "name": "347341ed1983be4310c8",
+        "boundFilter": "dt_MoMo_Statement",
+        "asAggregation": false,
+        "qnaSingleSelectRequired": false,
+        "fieldExpr": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "MoMo"
+              }
+            },
+            "Property": "Statement"
+          }
+        }
+      },
+      {
+        "name": "e8aaba5be92cf50adb2b",
+        "boundFilter": "dt_MoMo_Layout",
+        "asAggregation": false,
+        "qnaSingleSelectRequired": false,
+        "fieldExpr": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "MoMo"
+              }
+            },
+            "Property": "Layout"
+          }
+        }
+      },
+      {
+        "name": "99fb5e00aa7b58ee252e",
+        "boundFilter": "dt_Date_Month",
+        "asAggregation": false,
+        "qnaSingleSelectRequired": false,
+        "fieldExpr": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Date"
+              }
+            },
+            "Property": "Month"
+          }
+        }
+      }
+    ]
+  },
+  "objects": {
+    "background": [
+      {
+        "properties": {
+          "color": {
+            "solid": {
+              "color": {
+                "expr": {
+                  "Literal": {
+                    "Value": "'#F5F6F8'"
+                  }
+                }
+              }
+            }
+          },
+          "transparency": {
+            "expr": {
+              "Literal": {
+                "Value": "0D"
+              }
+            }
+          }
+        }
+      }
+    ]
+  }
+}

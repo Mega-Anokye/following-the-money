@@ -1,0 +1,51 @@
+/// Calendar for both sources.
+table Date
+	lineageTag: 6829a29b-5562-43f0-b0d2-31060cd4f50a
+	dataCategory: Time
+
+	column Date
+		dataType: dateTime
+		isKey
+		formatString: dd mmm yyyy
+		lineageTag: 64751884-e856-4dde-b91f-109ada9f3725
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [Date]
+
+		annotation SummarizationSetBy = Automatic
+
+	column Month
+		dataType: string
+		lineageTag: d23d04fa-13f2-4622-b710-687a870e432a
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [Month]
+		sortByColumn: MonthKey
+
+		annotation SummarizationSetBy = Automatic
+
+	column MonthKey
+		dataType: int64
+		isHidden
+		lineageTag: e87f391e-163c-4cfe-af2a-f103ae6f2252
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [MonthKey]
+
+		annotation SummarizationSetBy = Automatic
+
+	column Year
+		dataType: int64
+		lineageTag: f9ed7e8d-9c11-49ee-a5a7-e6624c554b6e
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [Year]
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Date = calculated
+		mode: import
+		source = ADDCOLUMNS ( CALENDAR ( DATE ( 2025, 7, 1 ), DATE ( 2026, 11, 30 ) ), "Month", FORMAT ( [Date], "MMM yy" ), "MonthKey", YEAR ( [Date] ) * 100 + MONTH ( [Date] ), "Year", YEAR ( [Date] ) )
+
+	annotation PBI_Id = 48a7728aa613d9146f51
+

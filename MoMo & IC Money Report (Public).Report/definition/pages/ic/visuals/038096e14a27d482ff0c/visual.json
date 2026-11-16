@@ -1,0 +1,107 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/1.0.0/schema.json",
+  "name": "038096e14a27d482ff0c",
+  "position": {
+    "x": 544,
+    "y": 438,
+    "z": 17000,
+    "width": 720,
+    "height": 274,
+    "tabOrder": 17000
+  },
+  "visual": {
+    "visualType": "textbox",
+    "objects": {
+      "general": [
+        {
+          "properties": {
+            "paragraphs": [
+              {
+                "textRuns": [
+                  {
+                    "value": "What the data says",
+                    "textStyle": {
+                      "fontWeight": "bold",
+                      "fontSize": "10.5pt",
+                      "color": "#1F3A5F"
+                    }
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": "• The savings habit is micro: 147 of 319 contributions were GHS 6 top-ups. Together they added GHS 26,526 in 2026.",
+                    "textStyle": {
+                      "fontSize": "9pt",
+                      "color": "#1F2933"
+                    }
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": "• Shares cost GHS 9,106 and are worth GHS 9,840: +GHS 734 (8.1%). Best: KASA (GHS 542, Kasapreko IPO shares). Weakest: EGL (GHS -276).",
+                    "textStyle": {
+                      "fontSize": "9pt",
+                      "color": "#1F2933"
+                    }
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": "• 39 trades cost GHS 261 in charges, 2.3% of value traded. Small, frequent buys pay a proportionally high fee.",
+                    "textStyle": {
+                      "fontSize": "9pt",
+                      "color": "#1F2933"
+                    }
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": "• IPO: GHS 2,966 subscribed, GHS 1,762 refunded (partial allotment).",
+                    "textStyle": {
+                      "fontSize": "9pt",
+                      "color": "#1F2933"
+                    }
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": "• Every IC payment to 19 Jun 2026 matches a wallet transaction. After that, 28 payments (GHS 10,358) have none: proof the newer MTN statements are incomplete. IC posts on average 0.76 days after MoMo.",
+                    "textStyle": {
+                      "fontSize": "9pt",
+                      "color": "#1F2933"
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      ]
+    },
+    "visualContainerObjects": {
+      "title": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            }
+          }
+        }
+      ]
+    }
+  }
+}

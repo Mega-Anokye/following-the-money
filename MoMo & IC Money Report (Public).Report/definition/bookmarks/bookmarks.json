@@ -1,0 +1,23 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/bookmarksMetadata/1.0.0/schema.json",
+  "items": [
+    {
+      "name": "bm_momo_all"
+    },
+    {
+      "name": "bm_momo_gaps"
+    },
+    {
+      "name": "bm_momo_charged"
+    },
+    {
+      "name": "bm_ic_all"
+    },
+    {
+      "name": "bm_ic_unmatched"
+    },
+    {
+      "name": "bm_ic_trades"
+    }
+  ]
+}

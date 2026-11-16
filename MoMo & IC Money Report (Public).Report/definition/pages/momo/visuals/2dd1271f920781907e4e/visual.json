@@ -1,0 +1,107 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/1.0.0/schema.json",
+  "name": "2dd1271f920781907e4e",
+  "position": {
+    "x": 964,
+    "y": 438,
+    "z": 19000,
+    "width": 300,
+    "height": 274,
+    "tabOrder": 19000
+  },
+  "visual": {
+    "visualType": "textbox",
+    "objects": {
+      "general": [
+        {
+          "properties": {
+            "paragraphs": [
+              {
+                "textRuns": [
+                  {
+                    "value": "What the data says",
+                    "textStyle": {
+                      "fontWeight": "bold",
+                      "fontSize": "10.5pt",
+                      "color": "#1F3A5F"
+                    }
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": "• 47% of all money in (GHS 129,126) was work money from the employer. The wallet is largely a pass-through, so personal spending is well below the totals.",
+                    "textStyle": {
+                      "fontSize": "8pt",
+                      "color": "#1F2933"
+                    }
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": "• MTN’s newer statements (from Jun 2026) leave days out: 16 balance breaks, confirmed by 28 IC payments (GHS 10,358) with no wallet row. The older ones have one gap: GHS 1,236 on 20 May 2026.",
+                    "textStyle": {
+                      "fontSize": "8pt",
+                      "color": "#1F2933"
+                    }
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": "• GHS 961 in charges came off the balance. Older statements showed none of the GHS 660 charged to Jun 2026. The newer layout itemises every fee.",
+                    "textStyle": {
+                      "fontSize": "8pt",
+                      "color": "#1F2933"
+                    }
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": "• 14% of money out was saved: IC GHS 30,379, pension GHS 5,627, YelloSave GHS 1,607.",
+                    "textStyle": {
+                      "fontSize": "8pt",
+                      "color": "#1F2933"
+                    }
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": "• The balance ended a day under GHS 31 on 180 days. Money rarely stays in the wallet.",
+                    "textStyle": {
+                      "fontSize": "8pt",
+                      "color": "#1F2933"
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      ]
+    },
+    "visualContainerObjects": {
+      "title": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            }
+          }
+        }
+      ]
+    }
+  }
+}

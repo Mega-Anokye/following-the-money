@@ -1,0 +1,370 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.14.0/schema.json",
+  "name": "da0a33f4c22ffa94f36a",
+  "position": {
+    "x": 16,
+    "y": 168,
+    "z": 12000,
+    "height": 544,
+    "width": 1248,
+    "tabOrder": 12000
+  },
+  "visual": {
+    "visualType": "tableEx",
+    "query": {
+      "queryState": {
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "MoMo"
+                    }
+                  },
+                  "Property": "DateTime"
+                }
+              },
+              "queryRef": "MoMo.DateTime",
+              "nativeQueryRef": "DateTime",
+              "displayName": "Date & time"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "MoMo"
+                    }
+                  },
+                  "Property": "Direction"
+                }
+              },
+              "queryRef": "MoMo.Direction",
+              "nativeQueryRef": "Direction",
+              "displayName": "In/Out"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "MoMo"
+                    }
+                  },
+                  "Property": "Category"
+                }
+              },
+              "queryRef": "MoMo.Category",
+              "nativeQueryRef": "Category",
+              "displayName": "Category"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "MoMo"
+                    }
+                  },
+                  "Property": "Counterparty"
+                }
+              },
+              "queryRef": "MoMo.Counterparty",
+              "nativeQueryRef": "Counterparty",
+              "displayName": "Counterparty"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "MoMo"
+                    }
+                  },
+                  "Property": "Type"
+                }
+              },
+              "queryRef": "MoMo.Type",
+              "nativeQueryRef": "Type",
+              "displayName": "Type"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "MoMo"
+                    }
+                  },
+                  "Property": "Amount"
+                }
+              },
+              "queryRef": "MoMo.Amount",
+              "nativeQueryRef": "Amount",
+              "displayName": "Amount"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "MoMo"
+                    }
+                  },
+                  "Property": "ChargesPaid"
+                }
+              },
+              "queryRef": "MoMo.ChargesPaid",
+              "nativeQueryRef": "ChargesPaid",
+              "displayName": "Charges"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "MoMo"
+                    }
+                  },
+                  "Property": "FeeShown"
+                }
+              },
+              "queryRef": "MoMo.FeeShown",
+              "nativeQueryRef": "FeeShown",
+              "displayName": "Fee shown"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "MoMo"
+                    }
+                  },
+                  "Property": "BalanceBefore"
+                }
+              },
+              "queryRef": "MoMo.BalanceBefore",
+              "nativeQueryRef": "BalanceBefore",
+              "displayName": "Balance before"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "MoMo"
+                    }
+                  },
+                  "Property": "BalanceAfter"
+                }
+              },
+              "queryRef": "MoMo.BalanceAfter",
+              "nativeQueryRef": "BalanceAfter",
+              "displayName": "Balance after"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "MoMo"
+                    }
+                  },
+                  "Property": "UnlistedMovement"
+                }
+              },
+              "queryRef": "MoMo.UnlistedMovement",
+              "nativeQueryRef": "UnlistedMovement",
+              "displayName": "Gap before row"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "MoMo"
+                    }
+                  },
+                  "Property": "Statement"
+                }
+              },
+              "queryRef": "MoMo.Statement",
+              "nativeQueryRef": "Statement",
+              "displayName": "Statement"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "MoMo"
+                    }
+                  },
+                  "Property": "TxnID"
+                }
+              },
+              "queryRef": "MoMo.TxnID",
+              "nativeQueryRef": "TxnID",
+              "displayName": "MTN transaction ID"
+            }
+          ]
+        }
+      },
+      "sortDefinition": {
+        "isDefaultSort": true
+      }
+    },
+    "objects": {
+      "columnHeaders": [
+        {
+          "properties": {
+            "fontSize": {
+              "expr": {
+                "Literal": {
+                  "Value": "8D"
+                }
+              }
+            },
+            "wordWrap": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "bold": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "fontColor": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "Literal": {
+                      "Value": "'#1F2933'"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      ],
+      "values": [
+        {
+          "properties": {
+            "fontSize": {
+              "expr": {
+                "Literal": {
+                  "Value": "8D"
+                }
+              }
+            },
+            "fontColor": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "Literal": {
+                      "Value": "'#1F2933'"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "visualContainerObjects": {
+      "title": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Transactions'"
+                }
+              }
+            },
+            "fontSize": {
+              "expr": {
+                "Literal": {
+                  "Value": "11D"
+                }
+              }
+            },
+            "bold": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "fontColor": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "Literal": {
+                      "Value": "'#1F2933'"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      ],
+      "subTitle": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Newest first. \"Gap before row\" = balance moved with no transaction listed (MTN statement gap).'"
+                }
+              }
+            },
+            "fontSize": {
+              "expr": {
+                "Literal": {
+                  "Value": "9D"
+                }
+              }
+            },
+            "fontColor": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "Literal": {
+                      "Value": "'#5B6670'"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      ]
+    }
+  }
+}

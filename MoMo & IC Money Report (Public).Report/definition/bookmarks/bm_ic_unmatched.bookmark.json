@@ -1,0 +1,87 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/bookmark/2.1.0/schema.json",
+  "displayName": "IC detail: no wallet row",
+  "name": "bm_ic_unmatched",
+  "explorationState": {
+    "version": "1.0",
+    "activeSection": "ic_detail",
+    "sections": {
+      "ic_detail": {
+        "filters": {
+          "byExpr": [
+            {
+              "name": "fltMatch",
+              "type": "Categorical",
+              "filter": {
+                "Version": 2,
+                "From": [
+                  {
+                    "Name": "q",
+                    "Entity": "IC",
+                    "Type": 0
+                  }
+                ],
+                "Where": [
+                  {
+                    "Condition": {
+                      "In": {
+                        "Expressions": [
+                          {
+                            "Column": {
+                              "Expression": {
+                                "SourceRef": {
+                                  "Source": "q"
+                                }
+                              },
+                              "Property": "MatchStatus"
+                            }
+                          }
+                        ],
+                        "Values": [
+                          [
+                            {
+                              "Literal": {
+                                "Value": "'NOT FOUND in MoMo'"
+                              }
+                            }
+                          ]
+                        ]
+                      }
+                    }
+                  }
+                ]
+              },
+              "expression": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "IC"
+                    }
+                  },
+                  "Property": "MatchStatus"
+                }
+              },
+              "howCreated": 1
+            },
+            {
+              "name": "fltAction",
+              "type": "Categorical",
+              "expression": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "IC"
+                    }
+                  },
+                  "Property": "Action"
+                }
+              },
+              "howCreated": 1
+            }
+          ]
+        },
+        "visualContainers": {}
+      }
+    }
+  }
+}

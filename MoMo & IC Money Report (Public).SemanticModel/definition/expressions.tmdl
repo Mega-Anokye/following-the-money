@@ -1,0 +1,6 @@
+/// Folder holding momo_transactions.csv, ic_transactions.csv and ic_holdings.csv. Set it to this repo's Data folder (keep the trailing backslash): Transform data > Edit parameters.
+expression DataFolder = "C:\path\to\following-the-money\Data\" meta [IsParameterQuery=true, Type="Text", IsParameterQueryRequired=true]
+	lineageTag: 482e15dc-71b2-4ec9-a1d5-cad76f5ac6b5
+
+	annotation PBI_ResultType = Text
+

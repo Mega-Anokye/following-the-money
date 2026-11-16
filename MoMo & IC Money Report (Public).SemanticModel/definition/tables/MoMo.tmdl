@@ -1,0 +1,179 @@
+/// One row per MTN MoMo transaction, 4 statements merged and de-duplicated by transaction ID.
+table MoMo
+	lineageTag: 9357ad3b-54d3-42c0-9d89-f8703696d92e
+
+	column Seq
+		dataType: int64
+		isHidden
+		lineageTag: bc71f260-d296-4d27-88aa-cce26a541f8a
+		summarizeBy: none
+		sourceColumn: Seq
+
+		annotation SummarizationSetBy = Automatic
+
+	column TxnID
+		dataType: string
+		lineageTag: a5d86df6-9e59-4370-a5f8-a8a5153ffa16
+		summarizeBy: none
+		sourceColumn: TxnID
+
+		annotation SummarizationSetBy = Automatic
+
+	column DateTime
+		dataType: dateTime
+		formatString: dd mmm yyyy hh:nn
+		lineageTag: b79a940c-7435-48d3-84db-254bb12584f3
+		summarizeBy: none
+		sourceColumn: DateTime
+
+		annotation SummarizationSetBy = Automatic
+
+	column Date
+		dataType: dateTime
+		formatString: dd mmm yyyy
+		lineageTag: 493a7e21-11f1-4613-aadb-abce4a4ead85
+		summarizeBy: none
+		sourceColumn: Date
+
+		annotation SummarizationSetBy = Automatic
+
+	column Direction
+		dataType: string
+		lineageTag: b29a3207-07cd-4010-8dab-59890dbd203b
+		summarizeBy: none
+		sourceColumn: Direction
+
+		annotation SummarizationSetBy = Automatic
+
+	column Type
+		dataType: string
+		lineageTag: 3feefb5b-7186-44e4-a571-ec54973f6316
+		summarizeBy: none
+		sourceColumn: Type
+
+		annotation SummarizationSetBy = Automatic
+
+	column Category
+		dataType: string
+		lineageTag: 22348ff1-0745-4681-b94b-25b30d4372e1
+		summarizeBy: none
+		sourceColumn: Category
+
+		annotation SummarizationSetBy = Automatic
+
+	column Counterparty
+		dataType: string
+		lineageTag: c10148d9-5b26-4c37-9c14-b3c1e1f694a1
+		summarizeBy: none
+		sourceColumn: Counterparty
+
+		annotation SummarizationSetBy = Automatic
+
+	column Amount
+		dataType: double
+		formatString: "GHS "#,0.00
+		lineageTag: 992c3b0d-aa61-4877-ac72-514ef7aa7ac6
+		summarizeBy: sum
+		sourceColumn: Amount
+
+		annotation SummarizationSetBy = Automatic
+
+	column FeeShown
+		dataType: double
+		formatString: "GHS "#,0.00
+		lineageTag: b4b8adfb-468c-4534-b31c-25d2ece79220
+		summarizeBy: sum
+		sourceColumn: FeeShown
+
+		annotation SummarizationSetBy = Automatic
+
+	column ChargesPaid
+		dataType: double
+		formatString: "GHS "#,0.00
+		lineageTag: d27c873e-1d8e-422a-b640-5f4cc3e65233
+		summarizeBy: sum
+		sourceColumn: ChargesPaid
+
+		annotation SummarizationSetBy = Automatic
+
+	column BalanceBefore
+		dataType: double
+		formatString: "GHS "#,0.00
+		lineageTag: 2c6aee21-3cd2-4182-83e0-ae196b05809d
+		summarizeBy: none
+		sourceColumn: BalanceBefore
+
+		annotation SummarizationSetBy = Automatic
+
+	column BalanceAfter
+		dataType: double
+		formatString: "GHS "#,0.00
+		lineageTag: 3bc2babc-e9f2-4e0f-b3ca-dce4badd7b09
+		summarizeBy: none
+		sourceColumn: BalanceAfter
+
+		annotation SummarizationSetBy = Automatic
+
+	column BalanceChange
+		dataType: double
+		formatString: "GHS "#,0.00
+		lineageTag: 20de1da6-5bd7-433a-a412-0bce916dd68f
+		summarizeBy: sum
+		sourceColumn: BalanceChange
+
+		annotation SummarizationSetBy = Automatic
+
+	column UnlistedMovement
+		dataType: double
+		formatString: "GHS "#,0.00
+		lineageTag: ef5e80d4-c181-4710-945a-428074fb5f49
+		summarizeBy: sum
+		sourceColumn: UnlistedMovement
+
+		annotation SummarizationSetBy = Automatic
+
+	column Statement
+		dataType: string
+		lineageTag: 09576fad-e12f-44ce-bcd0-1f08f23c202d
+		summarizeBy: none
+		sourceColumn: Statement
+
+		annotation SummarizationSetBy = Automatic
+
+	column Layout
+		dataType: string
+		lineageTag: 3ef549be-591b-429c-9312-0137a31b4060
+		summarizeBy: none
+		sourceColumn: Layout
+
+		annotation SummarizationSetBy = Automatic
+
+	column BalanceGap
+		dataType: string
+		lineageTag: 0b38d0cf-1d62-4980-b08d-49c037da2c24
+		summarizeBy: none
+		sourceColumn: BalanceGap
+
+		annotation SummarizationSetBy = Automatic
+
+	column Charged
+		dataType: string
+		lineageTag: 00041548-ae07-411e-a904-e3aa28e76515
+		summarizeBy: none
+		sourceColumn: Charged
+
+		annotation SummarizationSetBy = Automatic
+
+	partition MoMo = m
+		mode: import
+		source =
+				let
+				    Source = Csv.Document(File.Contents(DataFolder & "momo_transactions.csv"), [Delimiter = ",", Encoding = 65001, QuoteStyle = QuoteStyle.Csv]),
+				    Promoted = Table.PromoteHeaders(Source, [PromoteAllScalars = true]),
+				    Blanks = Table.TransformColumns(Promoted, {}, each if _ = "" then null else _),
+				    Typed = Table.TransformColumnTypes(Blanks, {{"Seq", Int64.Type}, {"TxnID", type text}, {"DateTime", type datetime}, {"Date", type date}, {"Direction", type text}, {"Type", type text}, {"Category", type text}, {"Counterparty", type text}, {"Amount", type number}, {"FeeShown", type number}, {"ChargesPaid", type number}, {"BalanceBefore", type number}, {"BalanceAfter", type number}, {"BalanceChange", type number}, {"UnlistedMovement", type number}, {"Statement", type text}, {"Layout", type text}, {"BalanceGap", type text}, {"Charged", type text}}, "en-US")
+				in
+				    Typed
+
+	annotation PBI_ResultType = Table
+
