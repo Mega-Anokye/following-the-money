@@ -65,17 +65,17 @@ Four pages, 35 DAX measures, synced slicers (month, direction, category, IC acco
 - **IC Wealth:** money in and out of IC, gain/loss by stock, holdings.
 - **MoMo transactions / IC transactions:** the detail behind any bar. Click a bar and then **List selected →**, or click a red card: *Gaps in MTN statements* opens the 17 gap rows, *Matched to a wallet row* opens the 28 missing IC payments, and *Trading cost* opens the trades.
 
-![MTN MoMo wallet page](images/momo.jpg)
+![MTN MoMo wallet page](images/momo.png)
 
-![IC Wealth page](images/ic.jpg)
+![IC Wealth page](images/ic.png)
 
 Hover any bar to drill through to its transactions:
 
-![Drill through from a bar](images/drill-through.jpg)
+![Drill through from a bar](images/drill-through.png)
 
 Clicking *Gaps in MTN statements* lists the 17 rows where MTN's balance chain breaks, with the gap shown before each row:
 
-![The 17 statement gaps](images/gaps-detail.jpg)
+![The 17 statement gaps](images/gaps-detail.png)
 
 *In Power BI Desktop, hold **Ctrl** while clicking a button or card (in the published report a normal click works).*
 
