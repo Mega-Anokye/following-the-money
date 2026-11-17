@@ -103,6 +103,8 @@ JavaScript (Node.js, pdf.js, ExcelJS) · Excel (live check formulas) · Power BI
 
 ---
 
-**Mega Anokye**, Data Analyst, Accra · [github.com/Mega-Anokye](https://github.com/Mega-Anokye)
+## About me
 
-At work I train a 200+ sales force across 5 branches and coach 14+ area sales managers on Power BI. I also build automation in Power Automate: a five-stage payment-approval workflow with a verification gate and full audit trail (Power Automate + SharePoint + Forms), automated invoice and leave approvals, validation checks that cut reporting errors by 25%, and an export-record reconciliation that lifted accuracy by 7%. This project applies the same habit to my own money: trust nothing until it reconciles.
+I'm Mega Anokye, a data analyst in Accra who makes numbers trustworthy. At Multipro (Tolaram Group) I build Power BI reporting used by 350+ people across five branches, validation checks that cut reporting errors by 25%, and Power Automate systems such as a five-stage payment-approval workflow with a verification gate and full audit trail. I also train a 200+ sales force and coach 14+ area sales managers on Power BI. This project applies the same habit to my own money: trust nothing until it reconciles.
+
+[Portfolio](https://mega-anokye.vercel.app) · [LinkedIn](https://www.linkedin.com/in/mega-anokye/) · [GitHub](https://github.com/Mega-Anokye)
